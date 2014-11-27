@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
-BASE_PATH=/opt
+BASE_PATH=/opt/pixelated
 PIXELATED_PATH=$BASE_PATH/pixelated-user-agent
-mkdir -p $BASE_PATH
+
+sudo mkdir -p $BASE_PATH
+sudo chown -R vagrant:vagrant $BASE_PATH
 
 sudo apt-get install -y nodejs npm ruby bundler git python-dev libffi-dev libevent-dev nodejs-legacy phantomjs
 
-git clone https://github.com/pixelated-project/pixelated-user-agent $PIXELATED_PATH/
+git clone https://github.com/pixelated-project/pixelated-user-agent $PIXELATED_PATH
 
 cd $BASE_PATH
 curl -O https://pypi.python.org/packages/source/v/virtualenv/virtualenv-1.9.tar.gz
@@ -30,6 +32,3 @@ sudo npm install -g bower
 bower install
 sudo npm install -g grunt-cli
 ./go build
-
-cd $PIXELATED_PATH/service
-source .virtualenv/bin/activate
