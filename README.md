@@ -1,3 +1,5 @@
+# Pixelated demo
+
 Start by running ```vagrant up``` followed by ```vagrant ssh```.
 
     cd /opt/pixelated-user-agent/service
